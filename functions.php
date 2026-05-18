@@ -2,7 +2,24 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 function runestudios_is_vite_dev() {
-    return isset( $_GET['dev'] ) && '1' === $_GET['dev'];
+    $cached_status = get_transient( 'runestudios_vite_dev_server' );
+
+    if ( false !== $cached_status ) {
+        return 'running' === $cached_status;
+    }
+
+    $response = wp_remote_get(
+        'http://localhost:5173/@vite/client',
+        array(
+            'timeout' => 0.2,
+        )
+    );
+
+    $is_running = ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response );
+
+    set_transient( 'runestudios_vite_dev_server', $is_running ? 'running' : 'stopped', 10 );
+
+    return $is_running;
 }
 
 function runestudios_asset_uri( $path = '' ) {

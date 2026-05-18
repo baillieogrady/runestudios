@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Include the header
 get_header(); ?>
 
-<main class="text-blue-500">
+<main class="text-yellow-500">
     <?php
     if ( have_posts() ) :
         while ( have_posts() ) : the_post();
@@ -15,7 +15,6 @@ get_header(); ?>
         echo '<p>No content found</p>';
     endif;
     ?>
-    hello
 
 </main>
 
