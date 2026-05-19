@@ -5,11 +5,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Include the header
 get_header(); ?>
 
-<main class="text-yellow-500">
+<main class="flex flex-col gap-y-5">
     <?php
     if ( have_posts() ) :
         while ( have_posts() ) : the_post();
-            the_content();
+            if ( function_exists( 'have_rows' ) && have_rows( 'blocks' ) ) :
+                while ( have_rows( 'blocks' ) ) : the_row();
+                    get_template_part( 'template-parts/flexible/' . get_row_layout() );
+                endwhile;
+            else :
+                the_content();
+            endif;
         endwhile;
     else :
         echo '<p>No content found</p>';

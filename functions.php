@@ -96,3 +96,17 @@ function runestudios_module_scripts( $tag, $handle, $src ) {
     return $tag;
 }
 add_filter( 'script_loader_tag', 'runestudios_module_scripts', 10, 3 );
+
+function runestudios_disable_page_editor() {
+    remove_post_type_support( 'page', 'editor' );
+}
+add_action( 'init', 'runestudios_disable_page_editor' );
+
+function runestudios_disable_page_block_editor( $use_block_editor, $post_type ) {
+    if ( 'page' === $post_type ) {
+        return false;
+    }
+
+    return $use_block_editor;
+}
+add_filter( 'use_block_editor_for_post_type', 'runestudios_disable_page_block_editor', 10, 2 );
