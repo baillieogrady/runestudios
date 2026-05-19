@@ -4,6 +4,14 @@
 
 @font-face {
   font-family: "Clash Display";
+  src: url("/wp-content/themes/runestudios/assets/fonts/ClashDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash Display";
   src: url("/wp-content/themes/runestudios/assets/fonts/ClashDisplay-Semibold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
@@ -18,11 +26,27 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Inter Tight";
+  src: url("/wp-content/themes/runestudios/assets/fonts/InterTight-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Tight";
+  src: url("/wp-content/themes/runestudios/assets/fonts/InterTight-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --color-white-100: #fff;
-  --color-white-200: #f5f3ef;
+  --color-white: #fff;
   --color-black: #000;
-  --color-beige: #ebe7e0;
+  --color-beige-100: #f5f3ef;
+  --color-beige-200: #ebe7e0;
 
   --font-clash-display: "Clash Display", system-ui, sans-serif;
   --font-inter-tight: "Inter Tight", system-ui, sans-serif;
@@ -33,6 +57,7 @@
     font-family: var(--font-inter-tight);
     color: var(--color-black);
     background-color: var(--color-white-100);
+    font-weight: 400;
   }
 
   h1,

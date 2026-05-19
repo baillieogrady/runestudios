@@ -19,7 +19,7 @@ $image   = get_sub_field( 'image' );
                     'full',
                     false,
                     array(
-                        'class'    => 'rounded-4xl',
+                        'class'    => 'rounded-4xl w-full',
                         'loading'  => 'eager',
                         'decoding' => 'async',
                     )
@@ -30,7 +30,7 @@ $image   = get_sub_field( 'image' );
                     'full',
                     false,
                     array(
-                        'class'    => 'rounded-4xl',
+                        'class'    => 'rounded-4xl w-full',
                         'loading'  => 'eager',
                         'decoding' => 'async',
                     )
