@@ -94,6 +94,7 @@ $footer_link_label = $footer_link_title;
         ?>
     </div>
 </footer>
+</div>
 <?php wp_footer(); ?>
 </body>
 

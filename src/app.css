@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @source "../**/*.php";
+@source inline("mx-5 flex flex-col gap-y-5");
 
 @font-face {
   font-family: "Clash Display";
