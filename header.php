@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class("mx-5"); ?>>
+<body <?php body_class("mx-5 flex flex-col gap-y-5"); ?>>
     <?php wp_body_open(); ?>
-    <header class="flex items-center justify-between py-5 font-medium">
+    <header class="flex items-center justify-between pt-5 font-medium">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
             <?php
             $logo = function_exists( 'get_field' ) ? get_field( 'logo', 'option' ) : null;

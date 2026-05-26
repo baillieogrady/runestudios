@@ -60,6 +60,10 @@
     font-weight: 400;
   }
 
+  :where(figure) {
+    margin: 0 !important;
+  }
+
   h1,
   h2 {
     font-family: var(--font-clash-display);
