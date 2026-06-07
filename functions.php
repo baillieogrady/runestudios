@@ -2,6 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 function runestudios_register_menus() {
+    add_theme_support( 'post-thumbnails' );
+
     register_nav_menus(
         array(
             'header'  => 'Header',
@@ -18,15 +20,15 @@ function runestudios_register_portfolio_post_type() {
         array(
             'labels'       => array(
                 'name'                  => 'Portfolio',
-                'singular_name'         => 'Portfolio Item',
+                'singular_name'         => 'Portfolio',
                 'menu_name'             => 'Portfolio',
-                'add_new_item'          => 'Add New Portfolio Item',
-                'edit_item'             => 'Edit Portfolio Item',
-                'new_item'              => 'New Portfolio Item',
-                'view_item'             => 'View Portfolio Item',
+                'add_new_item'          => 'Add New Portfolio',
+                'edit_item'             => 'Edit Portfolio',
+                'new_item'              => 'New Portfolio',
+                'view_item'             => 'View Portfolio',
                 'search_items'          => 'Search Portfolio',
-                'not_found'             => 'No portfolio items found',
-                'not_found_in_trash'    => 'No portfolio items found in Trash',
+                'not_found'             => 'No portfolios found',
+                'not_found_in_trash'    => 'No portfolios found in Trash',
                 'all_items'             => 'All Portfolio',
             ),
             'public'       => true,
@@ -40,7 +42,6 @@ function runestudios_register_portfolio_post_type() {
             'supports'     => array(
                 'title',
                 'thumbnail',
-                'excerpt',
             ),
         )
     );
