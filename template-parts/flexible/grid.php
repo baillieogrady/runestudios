@@ -11,7 +11,7 @@ $items = $items ? array_slice($items, 0, 6) : array();
 ?>
 
 <?php if ($items) : ?>
-    <section>
+    <section class="mb-5">
         <ul class="grid grid-cols-2 gap-x-5 gap-y-10">
             <?php foreach ($items as $item) : ?>
                 <?php

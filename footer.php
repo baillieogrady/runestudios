@@ -17,15 +17,19 @@ if (is_array($footer_link)) {
     $footer_link_url = $footer_link;
 }
 
-$footer_link_label = $footer_link_title;
+$footer_link_label = html_entity_decode(
+    $footer_link_title,
+    ENT_QUOTES | ENT_HTML5,
+    get_bloginfo('charset') ?: 'UTF-8'
+);
 ?>
 <footer class="bg-black rounded-4xl p-10 mb-5 flex flex-col gap-y-20">
     <div>
         <?php if ($footer_image || $footer_link_label) : ?>
             <?php if ($footer_link_label) : ?>
                 <?php if ($footer_link_url) : ?>
-                    <a href="<?php echo esc_url($footer_link_url); ?>" <?php echo $footer_link_target ? ' target="' . esc_attr($footer_link_target) . '" rel="noopener noreferrer"' : ''; ?> class="flex items-center gap-x-10 w-full max-w-none text-[clamp(4rem,10.45vw,14rem)] font-medium leading-none tracking-normal text-white font-clash-display">
-                        <?php echo esc_html($footer_link_label); ?>
+                    <a href="<?php echo esc_url($footer_link_url); ?>" <?php echo $footer_link_target ? ' target="' . esc_attr($footer_link_target) . '" rel="noopener noreferrer"' : ''; ?> class="flex items-center gap-x-10 w-full max-w-none text-[clamp(4rem,10.45vw,14rem)] font-medium leading-none tracking-normal text-white font-clash-display uppercase">
+                        <span class="inline-block"><?php echo wp_kses_post($footer_link_label); ?></span>
     
                         <?php
                         if ($footer_image) {
@@ -57,7 +61,7 @@ $footer_link_label = $footer_link_title;
                         ?>
                     </a>
                 <?php else : ?>
-                    <span class="block w-full max-w-none text-[clamp(4rem,10.45vw,14rem)] font-semibold leading-none tracking-normal"><?php echo esc_html($footer_link_label); ?></span>
+                    <span class="block w-full max-w-none text-[clamp(4rem,10.45vw,14rem)] font-semibold leading-none tracking-normal"><?php echo wp_kses_post($footer_link_label); ?></span>
                 <?php endif; ?>
             <?php endif; ?>
         <?php endif; ?>

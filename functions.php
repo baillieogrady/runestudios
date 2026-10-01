@@ -14,6 +14,124 @@ function runestudios_register_menus() {
 }
 add_action( 'after_setup_theme', 'runestudios_register_menus' );
 
+function runestudios_add_gallery_layout( $field ) {
+    if ( 'flexible_content' !== ( $field['type'] ?? '' ) ) {
+        return $field;
+    }
+
+    foreach ( $field['layouts'] ?? array() as $layout ) {
+        if ( 'gallery' === ( $layout['name'] ?? '' ) ) {
+            return $field;
+        }
+    }
+
+    $field['layouts']['layout_runestudios_gallery'] = array(
+        'key'        => 'layout_runestudios_gallery',
+        'name'       => 'gallery',
+        'label'      => 'Gallery',
+        'display'    => 'block',
+        'sub_fields' => array(
+            array(
+                'key'           => 'field_runestudios_gallery_images',
+                'label'         => 'Images',
+                'name'          => 'images',
+                'type'          => 'gallery',
+                'instructions'  => 'Choose images in the order they should appear.',
+                'required'      => 0,
+                'return_format' => 'array',
+                'library'       => 'all',
+                'min'           => 0,
+                'max'           => 0,
+                'insert'        => 'append',
+                'preview_size'  => 'medium',
+            ),
+        ),
+        'min'        => '',
+        'max'        => '',
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=blocks', 'runestudios_add_gallery_layout' );
+
+function runestudios_add_conclusion_layout( $field ) {
+    if ( 'flexible_content' !== ( $field['type'] ?? '' ) ) {
+        return $field;
+    }
+
+    foreach ( $field['layouts'] ?? array() as $layout ) {
+        if ( 'conclusion' === ( $layout['name'] ?? '' ) ) {
+            return $field;
+        }
+    }
+
+    $field['layouts']['layout_runestudios_conclusion'] = array(
+        'key'        => 'layout_runestudios_conclusion',
+        'name'       => 'conclusion',
+        'label'      => 'Conclusion',
+        'display'    => 'block',
+        'sub_fields' => array(
+            array(
+                'key'      => 'field_runestudios_conclusion_heading',
+                'label'    => 'Heading',
+                'name'     => 'heading',
+                'type'     => 'text',
+                'required' => 0,
+            ),
+            array(
+                'key'        => 'field_runestudios_conclusion_text',
+                'label'      => 'Text',
+                'name'       => 'text',
+                'type'       => 'textarea',
+                'required'   => 0,
+                'rows'       => 3,
+                'new_lines'  => '',
+            ),
+        ),
+        'min'        => '',
+        'max'        => '',
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=blocks', 'runestudios_add_conclusion_layout' );
+
+function runestudios_add_image_layout( $field ) {
+    if ( 'flexible_content' !== ( $field['type'] ?? '' ) ) {
+        return $field;
+    }
+
+    foreach ( $field['layouts'] ?? array() as $layout ) {
+        if ( 'image' === ( $layout['name'] ?? '' ) ) {
+            return $field;
+        }
+    }
+
+    $field['layouts']['layout_runestudios_image'] = array(
+        'key'        => 'layout_runestudios_image',
+        'name'       => 'image',
+        'label'      => 'Image',
+        'display'    => 'block',
+        'sub_fields' => array(
+            array(
+                'key'           => 'field_runestudios_image_image',
+                'label'         => 'Image',
+                'name'          => 'image',
+                'type'          => 'image',
+                'required'      => 0,
+                'return_format' => 'array',
+                'library'       => 'all',
+                'preview_size'  => 'medium',
+            ),
+        ),
+        'min'        => '',
+        'max'        => '',
+    );
+
+    return $field;
+}
+add_filter( 'acf/load_field/name=blocks', 'runestudios_add_image_layout' );
+
 function runestudios_register_portfolio_post_type() {
     register_post_type(
         'portfolio',
@@ -42,6 +160,7 @@ function runestudios_register_portfolio_post_type() {
             'supports'     => array(
                 'title',
                 'thumbnail',
+                'excerpt',
             ),
         )
     );

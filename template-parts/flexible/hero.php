@@ -7,7 +7,7 @@ $image   = get_sub_field( 'image' );
 
 <section>
     <?php if ( $heading ) : ?>
-        <h1 class="w-full max-w-none text-[clamp(4rem,13.2vw,14rem)] font-semibold leading-none tracking-normal mb-5"><?php echo esc_html( $heading ); ?></h1>
+        <h1 class="w-full max-w-none text-[clamp(4rem,13.2vw,14rem)] font-semibold leading-none tracking-normal mb-5 [&_span]:block [&_span]:lg:inline-block text-center"><?php echo $heading; ?></h1>
     <?php endif; ?>
 
     <?php if ( $image ) : ?>

@@ -5,7 +5,7 @@ $items = get_sub_field( 'items' );
 ?>
 
 <?php if ( $items ) : ?>
-    <div class="p-20">
+    <div class="p-20 mx-20">
         <ul class="flex justify-between flex-wrap gap-x-20 gap-y-10">
             <?php foreach ( $items as $item ) : ?>
                 <li class="my-2.5">
