@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 </head>
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
-    <div class="mx-5 flex flex-col gap-y-5">
-    <header class="flex min-h-[60px] items-center justify-between px-5 py-2.5 font-medium">
+    <div class="mx-2.5 lg:mx-5 flex flex-col gap-y-5">
+    <header class="flex min-h-[60px] items-center justify-between py-2.5 font-medium">
         <a class="inline-flex shrink-0 items-center gap-2.5" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
             <?php
             $logo = function_exists( 'get_field' ) ? get_field( 'logo', 'option' ) : null;
@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <?php
             }
             ?>
-            <span class="text-[20px] leading-[1] font-semibold uppercase"><?php bloginfo( 'name' ); ?></span>
+            <span class="site-name text-[20px] leading-[1] font-semibold uppercase"><?php bloginfo( 'name' ); ?></span>
         </a>
 
         <?php
@@ -56,6 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 'theme_location' => 'header',
                 'container'      => 'nav',
                 'container_id'   => 'site-navigation',
+                'container_class' => 'header-navigation',
                 'container_aria_label' => 'Primary navigation',
                 'menu_class'     => 'm-0 flex list-none items-center gap-5 p-0 text-[20px] leading-[1] font-medium',
                 'fallback_cb'    => false,

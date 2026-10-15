@@ -12,7 +12,7 @@ $items = $items ? array_slice($items, 0, 6) : array();
 
 <?php if ($items) : ?>
     <section class="mb-5">
-        <ul class="grid grid-cols-2 gap-x-5 gap-y-10">
+        <ul class="grid gap-y-5 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-10">
             <?php foreach ($items as $item) : ?>
                 <?php
                 $post_id = is_object($item) ? $item->ID : $item;
@@ -26,7 +26,7 @@ $items = $items ? array_slice($items, 0, 6) : array();
                         <a href="<?php echo esc_url(get_permalink($post_id)); ?>" class="flex flex-col gap-5">
                             <?php if (has_post_thumbnail($post_id)) : ?>
                                 <?php echo get_the_post_thumbnail($post_id, 'large',     array(
-                                    'class' => 'rounded-4xl',   
+                                    'class' => 'rounded-4xl aspect-374/482 lg:aspect-square object-cover',   
                                 )); ?>
                             <?php endif; ?>
 

@@ -5,8 +5,8 @@ $items = get_sub_field( 'items' );
 ?>
 
 <?php if ( $items ) : ?>
-    <div class="p-20 mx-20">
-        <ul class="flex justify-between flex-wrap gap-x-20 gap-y-10">
+    <div class="lg:p-20 lg:mx-20">
+        <ul class="flex justify-between lg:flex-wrap gap-x-20 gap-y-10 overflow-x-scroll">
             <?php foreach ( $items as $item ) : ?>
                 <li class="my-2.5">
                     <?php
@@ -16,7 +16,7 @@ $items = get_sub_field( 'items' );
                             'full',
                             false,
                             array(
-                                'class' => 'max-w-38',
+                                'class' => 'max-w-32 lg:max-w-38',
                             )
                         );
                     } elseif ( is_numeric( $item ) ) {
@@ -25,13 +25,13 @@ $items = get_sub_field( 'items' );
                             'full',
                             false,
                             array(
-                                'class' => 'max-w-38',
+                                'class' => 'max-w-32 lg:max-w-38',
                             )
                         );
                     } else {
                         $item_url = is_array( $item ) && ! empty( $item['url'] ) ? $item['url'] : $item;
                         ?>
-                        <img class="max-w-38" src="<?php echo esc_url( $item_url ); ?>" alt="">
+                        <img class="max-w-32 lg:max-w-38" src="<?php echo esc_url( $item_url ); ?>" alt="">
                         <?php
                     }
                     ?>

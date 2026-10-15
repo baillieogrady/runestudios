@@ -23,13 +23,13 @@ $footer_link_label = html_entity_decode(
     get_bloginfo('charset') ?: 'UTF-8'
 );
 ?>
-<footer class="bg-black rounded-4xl p-10 mb-5 flex flex-col gap-y-20">
+<footer class="bg-black rounded-4xl p-10 mb-2.5 lg:mb-5 flex flex-col gap-y-20 mt-5 lg:mt-0">
     <div>
         <?php if ($footer_image || $footer_link_label) : ?>
             <?php if ($footer_link_label) : ?>
                 <?php if ($footer_link_url) : ?>
-                    <a href="<?php echo esc_url($footer_link_url); ?>" <?php echo $footer_link_target ? ' target="' . esc_attr($footer_link_target) . '" rel="noopener noreferrer"' : ''; ?> class="flex items-center gap-x-10 w-full max-w-none text-[clamp(4rem,10.45vw,14rem)] font-medium leading-none tracking-normal text-white font-clash-display uppercase">
-                        <span class="inline-block"><?php echo wp_kses_post($footer_link_label); ?></span>
+                    <a href="<?php echo esc_url($footer_link_url); ?>" <?php echo $footer_link_target ? ' target="' . esc_attr($footer_link_target) . '" rel="noopener noreferrer"' : ''; ?> class="flex justify-center lg:justify-start items-center gap-x-10 w-full max-w-none text-[3.5rem] lg:text-[9.5rem] font-medium leading-none tracking-normal text-white font-clash-display uppercase">
+                        <span class="text-center lg:text-left inline-block [&_span]:block lg:[&_span]:inline-block"><?php echo wp_kses_post($footer_link_label); ?></span>
     
                         <?php
                         if ($footer_image) {
@@ -40,6 +40,7 @@ $footer_link_label = html_entity_decode(
                                     false,
                                     array(
                                         'alt' => '',
+                                        'class' => 'hidden lg:inline-block',
                                     )
                                 );
                             } elseif (is_numeric($footer_image)) {
@@ -49,12 +50,13 @@ $footer_link_label = html_entity_decode(
                                     false,
                                     array(
                                         'alt' => '',
+                                        'class' => 'hidden lg:inline-block',
                                     )
                                 );
                             } else {
                                 $footer_image_url = is_array($footer_image) && ! empty($footer_image['url']) ? $footer_image['url'] : $footer_image;
                         ?>
-                                <img src="<?php echo esc_url($footer_image_url); ?>" alt="">
+                                <img src="<?php echo esc_url($footer_image_url); ?>" alt="" class="hidden lg:inline-block" />
                         <?php
                             }
                         }
@@ -66,8 +68,8 @@ $footer_link_label = html_entity_decode(
             <?php endif; ?>
         <?php endif; ?>
     </div>
-    <div class="py-10 text-white flex gap-x-60">
-        <p><?php echo esc_html($footer_text); ?></p>
+    <div class="py-10 text-white flex flex-col lg:flex-row gap-y-20 lg:gap-y-0 gap-x-60 text-[0.875rem] lg:text-[1rem]">
+        <p class="order-3 lg:order-1"><?php echo esc_html($footer_text); ?></p>
 
         <?php
         wp_nav_menu(
@@ -76,6 +78,7 @@ $footer_link_label = html_entity_decode(
                 'container'      => 'nav',
                 'container_id'   => 'site-navigation',
                 'container_aria_label' => 'socials navigation',
+                'container_class' => 'order-2 lg:order-2',
                 'menu_class'     => 'flex flex-col gap-y-2.5',
                 'fallback_cb'    => false,
                 'depth'          => 1,
@@ -90,6 +93,7 @@ $footer_link_label = html_entity_decode(
                 'container'      => 'nav',
                 'container_id'   => 'site-navigation',
                 'container_aria_label' => 'footer navigation',
+                'container_class' => 'order-1 lg:order-3',
                 'menu_class'     => 'flex flex-col gap-y-5',
                 'fallback_cb'    => false,
                 'depth'          => 1,

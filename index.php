@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Include the header
 get_header(); ?>
 
-<main class="flex flex-col gap-y-5">
+<main class="flex flex-col gap-y-10 lg:gap-y-5">
     <?php
     if ( have_posts() ) :
         while ( have_posts() ) : the_post();

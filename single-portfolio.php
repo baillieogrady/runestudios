@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 get_header();
 ?>
 
-<main class="flex flex-col gap-y-5">
+<main class="flex flex-col gap-y-10 lg:gap-y-5">
     <?php if ( have_posts() ) : ?>
         <?php while ( have_posts() ) : the_post(); ?>
             <?php if ( has_post_thumbnail() ) : ?>
@@ -15,7 +15,7 @@ get_header();
                         'full',
                         false,
                         array(
-                            'class'         => 'block w-full rounded-4xl aspect-[16/9] object-cover',
+                            'class'         => 'block w-full rounded-4xl object-cover aspect-374/862 lg:aspect-1400/860',
                             'loading'       => 'eager',
                             'decoding'      => 'async',
                             'fetchpriority' => 'high',
@@ -25,14 +25,14 @@ get_header();
                 </figure>
             <?php endif; ?>
 
-            <section class="flex flex-col items-center rounded-4xl bg-beige-200 px-5 py-12 text-center lg:py-20">
-                <h1 class="mb-6 font-clash-display text-[2.5rem] leading-[1.1] font-semibold uppercase lg:mb-7 lg:text-[4rem]">
+            <section class="flex flex-col items-center rounded-4xl bg-beige-200 px-5 text-center py-20">
+                <h1 class="mb-6 font-clash-display text-[4rem] leading-[1.1] font-semibold uppercase lg:mb-7">
                     <?php echo esc_html( get_the_title() ); ?>
                 </h1>
 
                 <?php $excerpt = get_the_excerpt(); ?>
                 <?php if ( $excerpt ) : ?>
-                    <p class="max-w-full text-base leading-[1.2] font-medium lg:max-w-[47%] lg:text-xl">
+                    <p class="max-w-full text-2xl leading-[1.2] font-medium lg:max-w-[47%] lg:text-xl">
                         <?php echo esc_html( wp_strip_all_tags( $excerpt ) ); ?>
                     </p>
                 <?php endif; ?>

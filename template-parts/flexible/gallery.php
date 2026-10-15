@@ -27,7 +27,7 @@ $images = array_filter( $images );
                             'large',
                             false,
                             array(
-                                'class'    => 'block aspect-[690/680] w-full rounded-4xl object-cover',
+                                'class'    => 'block w-full rounded-4xl aspect-374/482 lg:aspect-square object-cover',
                                 'loading'  => 'lazy',
                                 'decoding' => 'async',
                             )

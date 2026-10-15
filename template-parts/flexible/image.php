@@ -20,7 +20,7 @@ $image_id = is_array( $image ) && ! empty( $image['ID'] )
             'full',
             false,
             array(
-                'class'    => 'block w-full rounded-4xl',
+                'class'    => 'block w-full rounded-4xl object-cover aspect-374/862 lg:aspect-1400/860',
                 'loading'  => 'lazy',
                 'decoding' => 'async',
             )

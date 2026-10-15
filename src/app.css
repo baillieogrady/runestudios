@@ -71,3 +71,17 @@
     font-family: var(--font-clash-display);
   }
 }
+
+@media (max-width: 1023px) {
+  .site-name {
+    display: none;
+  }
+
+  .header-navigation > ul {
+    font-size: 14px;
+  }
+
+  .header-navigation > ul > li:not(:nth-child(3)):not(:nth-child(4)) {
+    display: none;
+  }
+}

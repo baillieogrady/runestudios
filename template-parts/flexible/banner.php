@@ -2,9 +2,9 @@
 if (! defined('ABSPATH')) exit;
 ?>
 
-<section class="bg-brown text-white rounded-4xl py-20">
+<section class="bg-brown text-white rounded-4xl py-20 px-7.5 lg:px-0">
     <?php if (have_rows('items')) : ?>
-        <div class="flex flex-wrap justify-center gap-y-6 gap-x-5 mx-auto max-w-[78.42%] text-[5.5rem] leading-[1.2] font-clash-display font-semibold tracking-[-1.2px]">
+        <div class="text-center lg:flex flex-wrap justify-center gap-y-6 gap-x-5 mx-auto lg:max-w-[78.42%] text-4xl lg:text-[5.5rem] leading-[1.4] lg:leading-[1.2] font-clash-display font-semibold tracking-[-1.2px]">
             <?php
             while (have_rows('items')) :
                 the_row();
@@ -29,7 +29,7 @@ if (! defined('ABSPATH')) exit;
                                 'full',
                                 false,
                                 array(
-                                    'class' => 'rounded-xl',
+                                    'class' => 'rounded-xl hidden lg:inline-block',
                                 )
                             );
                         } elseif (is_numeric($image)) {
@@ -38,13 +38,13 @@ if (! defined('ABSPATH')) exit;
                                 'full',
                                 false,
                                 array(
-                                    'class' => 'rounded-xl',
+                                    'class' => 'rounded-xl hidden lg:inline-block',
                                 )
                             );
                         } else {
                             $image_url = is_array($image) && ! empty($image['url']) ? $image['url'] : $image;
                         ?>
-                            <img class="rounded-xl" src="<?php echo esc_url($image_url); ?>" alt="">
+                            <img class="rounded-xl hidden lg:inline-block" src="<?php echo esc_url($image_url); ?>" alt="">
                         <?php
                         }
                         ?>
