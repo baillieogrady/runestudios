@@ -55,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             array(
                 'theme_location' => 'header',
                 'container'      => 'nav',
-                'container_id'   => 'site-navigation',
+                'container_id'   => 'primary-navigation',
                 'container_class' => 'header-navigation',
                 'container_aria_label' => 'Primary navigation',
                 'menu_class'     => 'm-0 flex list-none items-center gap-5 p-0 text-[20px] leading-[1] font-medium',

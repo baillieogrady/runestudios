@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: "Clash Display";
-  src: url("/wp-content/themes/runestudios/assets/fonts/ClashDisplay-Medium.woff2") format("woff2");
+  src: url("../assets/fonts/ClashDisplay-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: "Clash Display";
-  src: url("/wp-content/themes/runestudios/assets/fonts/ClashDisplay-Semibold.woff2") format("woff2");
+  src: url("../assets/fonts/ClashDisplay-Semibold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: "Inter Tight";
-  src: url("/wp-content/themes/runestudios/assets/fonts/InterTight-Regular.woff2") format("woff2");
+  src: url("../assets/fonts/InterTight-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: "Inter Tight";
-  src: url("/wp-content/themes/runestudios/assets/fonts/InterTight-Medium.woff2") format("woff2");
+  src: url("../assets/fonts/InterTight-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -37,7 +37,7 @@
 
 @font-face {
   font-family: "Inter Tight";
-  src: url("/wp-content/themes/runestudios/assets/fonts/InterTight-SemiBold.woff2") format("woff2");
+  src: url("../assets/fonts/InterTight-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;

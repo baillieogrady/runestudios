@@ -76,7 +76,7 @@ $footer_link_label = html_entity_decode(
             array(
                 'theme_location' => 'socials',
                 'container'      => 'nav',
-                'container_id'   => 'site-navigation',
+                'container_id'   => 'social-navigation',
                 'container_aria_label' => 'socials navigation',
                 'container_class' => 'order-2 lg:order-2',
                 'menu_class'     => 'flex flex-col gap-y-2.5',
@@ -91,7 +91,7 @@ $footer_link_label = html_entity_decode(
             array(
                 'theme_location' => 'footer',
                 'container'      => 'nav',
-                'container_id'   => 'site-navigation',
+                'container_id'   => 'footer-navigation',
                 'container_aria_label' => 'footer navigation',
                 'container_class' => 'order-1 lg:order-3',
                 'menu_class'     => 'flex flex-col gap-y-5',

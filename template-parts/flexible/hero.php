@@ -3,11 +3,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 $heading = get_sub_field( 'heading' );
 $image   = get_sub_field( 'image' );
+$heading_tag = is_singular( 'portfolio' ) ? 'h2' : 'h1';
 ?>
 
 <section>
     <?php if ( $heading ) : ?>
-        <h1 class="w-full max-w-none text-[clamp(4rem,13.2vw,14rem)] font-semibold leading-none tracking-normal mb-12.5 lg:mb-5 [&_span]:block [&_span]:lg:inline-block text-center"><?php echo $heading; ?></h1>
+        <<?php echo esc_html( $heading_tag ); ?> class="w-full max-w-none text-[clamp(4rem,13.2vw,14rem)] font-semibold leading-none tracking-normal mb-12.5 lg:mb-5 [&_span]:block [&_span]:lg:inline-block text-center"><?php echo wp_kses_post( $heading ); ?></<?php echo esc_html( $heading_tag ); ?>>
     <?php endif; ?>
 
     <?php if ( $image ) : ?>

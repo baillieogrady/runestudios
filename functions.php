@@ -14,6 +14,111 @@ function runestudios_register_menus() {
 }
 add_action( 'after_setup_theme', 'runestudios_register_menus' );
 
+function runestudios_acf_json_save_path( $path ) {
+    return trailingslashit( get_stylesheet_directory() ) . 'acf-json';
+}
+add_filter( 'acf/settings/save_json', 'runestudios_acf_json_save_path' );
+
+function runestudios_acf_json_load_paths( $paths ) {
+    $local_path = trailingslashit( get_stylesheet_directory() ) . 'acf-json';
+
+    if ( ! in_array( $local_path, $paths, true ) ) {
+        $paths[] = $local_path;
+    }
+
+    return $paths;
+}
+add_filter( 'acf/settings/load_json', 'runestudios_acf_json_load_paths' );
+
+/**
+ * Return content post types that have an edit screen, excluding media and internal records.
+ */
+function runestudios_get_editable_post_types() {
+    static $post_types = null;
+
+    if ( null === $post_types ) {
+        $post_types = get_post_types( array( 'show_ui' => true ), 'names' );
+
+        $non_content_types = array(
+            'attachment',
+            'revision',
+            'nav_menu_item',
+            'customize_changeset',
+            'wp_block',
+            'wp_navigation',
+            'wp_template',
+            'wp_template_part',
+            'acf-field',
+            'acf-field-group',
+            'acf-post-type',
+            'acf-taxonomy',
+            'acf-ui-options-page',
+        );
+
+        $post_types = array_values( array_diff( $post_types, $non_content_types ) );
+    }
+
+    return $post_types;
+}
+
+/**
+ * Check whether an ACF field group contains the shared blocks flexible-content field.
+ */
+function runestudios_field_group_has_blocks( $field_group ) {
+    static $cache = array();
+
+    if ( ! is_array( $field_group ) || ! function_exists( 'acf_get_fields' ) ) {
+        return false;
+    }
+
+    $field_group_id = $field_group['ID'] ?? $field_group['key'] ?? '';
+
+    if ( ! $field_group_id ) {
+        return false;
+    }
+
+    $cache_key = (string) $field_group_id;
+
+    if ( array_key_exists( $cache_key, $cache ) ) {
+        return $cache[ $cache_key ];
+    }
+
+    $cache[ $cache_key ] = false;
+    $fields              = acf_get_fields( $field_group_id );
+
+    if ( is_array( $fields ) ) {
+        foreach ( $fields as $field ) {
+            if ( 'blocks' === ( $field['name'] ?? '' ) && 'flexible_content' === ( $field['type'] ?? '' ) ) {
+                $cache[ $cache_key ] = true;
+                break;
+            }
+        }
+    }
+
+    return $cache[ $cache_key ];
+}
+
+/**
+ * Make the existing blocks field group available on every editable content post type.
+ */
+function runestudios_match_blocks_on_all_post_types( $match, $rule, $options, $field_group = array() ) {
+    if (
+        $match
+        || ! is_array( $rule )
+        || ! is_array( $options )
+        || 'post_type' !== ( $rule['param'] ?? '' )
+        || '==' !== ( $rule['operator'] ?? '' )
+        || ! runestudios_field_group_has_blocks( $field_group )
+    ) {
+        return $match;
+    }
+
+    $post_type = $options['post_type'] ?? '';
+
+    return in_array( $post_type, runestudios_get_editable_post_types(), true );
+}
+add_filter( 'acf/location/rule_match/post_type', 'runestudios_match_blocks_on_all_post_types', 20, 4 );
+
 function runestudios_add_gallery_layout( $field ) {
     if ( 'flexible_content' !== ( $field['type'] ?? '' ) ) {
         return $field;
